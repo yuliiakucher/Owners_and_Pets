@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block style_links %}
+    <link href={{ url_for('owner.static', filename = 'css/style.css') }} rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <h3>Register owner</h3>
+    <form method="POST">
+        {% for field in form %}
+            {% if not field == form.save %}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">{{ field.label }}</label>
+                    <div class=form-control">{{ field }}</div>
+                </div>
+                {% if field.errors %}
+                    <div class="error">{{ field.errors[0] }}</div>
+                {% endif %}
+            {% else %}
+                <div class="form-group">
+                    <div class=form-control">{{ field }}</div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        {#        <button type="submit" class="btn btn-primary">Submit</button>#}
+    </form>
+{% endblock %}

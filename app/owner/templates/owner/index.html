@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h2>Owners</h2>
+     {% if count and type%}
+        <div>Total: {{ count }} {{ type }}s</div>
+    {% endif %}
+    {% for owner in owners %}
+        <ul class="list-group">
+            <a class="list-group-item"
+               href="{{ url_for('owner.show_pets_by_owner', index=owners.index(owner)) }}">Name: {{ owner.name }}</a>
+            <li class="list-group-item">Age: {{ owner.age }}</li>
+            <li class="list-group-item">City: {{ owner.city }}</li>
+        </ul>
+    {% endfor %}
+    {% if count and type%}
+        <div>Total: {{ count }} {{ type }}s</div>
+    {% endif %}
+{% endblock %}
