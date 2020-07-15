@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-{#    <link rel="stylesheet" href="https://unpkg.com/@popperjs/core@2">#}
+    {#    <link rel="stylesheet" href="https://unpkg.com/@popperjs/core@2">#}
     <link href={{ url_for('static', filename = 'css/style.css') }} rel="stylesheet">
     {% block style_links %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
@@ -30,6 +30,16 @@
                     <a class="nav-link" href="{{ url_for('owner.owner_register') }}">Owner Registration <span
                             class="sr-only">(current)</span></a>
                 </li>
+                <form class="form-inline my-2 my-lg-0" method="POST" action="{{ url_for('owner.search_result') }}">
+                    <input
+                            class="form-control mr-sm-2"
+                            type="search"
+                            placeholder="Search"
+                            aria-label="Search"
+                            name="search"
+                            value="{{ request.args.get('search','') }}">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </ul>
         </div>
     </div>

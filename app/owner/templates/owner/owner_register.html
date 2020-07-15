@@ -6,7 +6,7 @@
 
 {% block body %}
     <h3>Register owner</h3>
-    <form method="POST">
+    <form action="{{ url_for("owner.owner_register") }}" method="POST">
         {% for field in form %}
             {% if not field == form.save %}
                 <div class="form-group">
