@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <h2>{{ owner.name }}'s Pets</h2>
-    <a class="btn btn-success" href={{ url_for('owner.pet_register', index=index) }}>Add Pet</a>
-    {% for pet in owner.pets %}
+    <h2>{{ single_owner.name }}'s Pets</h2>
+    <a class="btn btn-success btn-lg" href={{ url_for('owner.pet_register', index=index) }}>Add Pet</a>
+    {% for pet in single_owner.pets %}
         <ul class="list-group">
             <li class="list-group-item">Name: {{ pet.name }}</li>
             <li class="list-group-item">Age: {{ pet.age }}</li>
             <a href={{ url_for('owner.show_owner_by_type', type=pet.type) }} class="list-group-item">Type: {{ pet.type }}</a>
             <a class="btn btn-outline-danger"
-               href="{{ url_for('owner.del_pet', index=index, pet_index=owner.pets.index(pet)) }}">Delete Pet</a>
+               href="{{ url_for('owner.del_pet', index=index, pet_index=pet.id) }}">Delete Pet</a>
 
         </ul>
     {% endfor %}

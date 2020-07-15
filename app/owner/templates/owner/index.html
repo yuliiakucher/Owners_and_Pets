@@ -2,18 +2,16 @@
 
 {% block body %}
     <h2>Owners</h2>
-     {% if count and type%}
-        <div>Total: {{ count }} {{ type }}s</div>
+    {% if count and type %}
+        <h4 class="display-4">Total: {{ count }} {{ type }}s</h4>
     {% endif %}
     {% for owner in owners %}
         <ul class="list-group">
             <a class="list-group-item"
-               href="{{ url_for('owner.show_pets_by_owner', index=owners.index(owner)) }}">Name: {{ owner.name }}</a>
+               href="{{ url_for('owner.show_pets_by_owner', index=owner.id) }}">Name: {{ owner.name }}</a>
             <li class="list-group-item">Age: {{ owner.age }}</li>
             <li class="list-group-item">City: {{ owner.city }}</li>
+            <a href="{{ url_for('owner.del_owner', index=owner.id) }}" class="btn btn-outline-danger">Delete</a>
         </ul>
     {% endfor %}
-    {% if count and type%}
-        <div>Total: {{ count }} {{ type }}s</div>
-    {% endif %}
 {% endblock %}
